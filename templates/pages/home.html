@@ -1,45 +1,142 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rocketry</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/some.css' %}">
+    <link rel="stylesheet" href="{% static 'css/added.css' %}">
 </head>
 <body>
-    <h1>This program generates important parameters in a conical supersonic converging-diverging
-        nozzle from certain user inputs.</h1>
-    <h5>Below is a full list of this program's capabilities and
-        key thermodynamic assumptions. Many input parameters can be obtained from NASA's CEA program
-        (Chemical Equilibrium with Applications), which is available freely available to the
-        public for <a href="https://www.grc.nasa.gov/www/CEAWeb/"></a> download here</h5>
-    <form action="" method="post">
-        {% csrf_token %}
-        <legend>Desired thrust (N):</legend>
-        <input type="number" name="thrust" id=""><br>
+    <section class="top-bar">
+    <div class="container">
+        <div class="top-bar">
+        <div class="container-fluid">
+            <div class="row">
+                <h1 style=" color: #fff;text-align: center; padding-top: 40pt;">This program generates parameters for a conical supersonic converging-diverging
+                nozzle from certain user inputs.
+                </h1>
+            </div>
+        </div>
+        <div class="container-fluid">
+                    <!--Some docs go here-->
+            <h4 style="color: #fff; text-align: center; padding-top: 40pt;">ALL CALCULATIONS ARE DONE IN STANDARD IMPERIAL (SI) UNITS, WITH TEMPERATURE IN KELVIN.
+                        ANGLES IN DEGREES.
+            </h4>
+            <div class="row docs" >
+                <h5>Below is a full list of this program's capabilities and
+                    key thermodynamic assumptions. Many input parameters can be obtained from NASA's CEA program
+                    (Chemical Equilibrium with Applications), which is available freely available to the
+                    public<br><br>
+                    <a href="https://www.grc.nasa.gov/www/CEAWeb/">
+                        <button class="btn btn-primary">download them here</button>
+                    </a>
+                </h5>
+                <h4>
+                    CALCULATION ASSUMPTIONS:
+                </h4>
+                <ol>
+                    <li>Flow maintains equilibrium at the local pressure and enthalpy level (reversible).</li>
+                    <li>No heat transfer across gas-enclosure walls; closed system (adiabatic).</li>
+                    <li>By definition, the flow is isentropic due to assumptions 1 and 2.</li>
+                    <li>Flow composition is considered frozen (tends to underestimate performance by 1-4%).</li>
+                    <li>Working fluid obeys the perfect gas law.</li>
+                    <li>All species of the working fluid in the flow is gaseous.</li>
+                    <li>Wall friction is negligible and all boundary layer effects are ignored.</li>
+                    <li>There are no shock waves or other discontinuities within the nozzle flow.</li>
+                    <li>Propellant mass flow rate is constant and steady.</li>
+                    <li>Expansion of the working fluid is uniform and steady; no significant turbulence.</li>
+                    <li>All exhaust gases travel with a velocity parallel to the nozzle axis.</li>
+                    <li>Gas velocity, pressure, temperature, & density are all uniform across any section
+                        perpendicular to the nozzle axis.</li>
+                    <li>Nozzle dimensions assume an optimum divergence half-angle of 15 degrees, and an
+                        optimum convergence half-angle of 45 degrees.</li>
+                    <li>Contraction ratio (cross-sectional area of the chamber/area of the throat) of 8.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
 
-        <legend>Chamber pressure (Pa):</legend>
-        <input type="number" name="chamber_pressure" id="">
-
-        <legend>Altitude (m):</legend>
-        <input type="number" name="altitude" id="">
-
-        <legend>Oxidizer to fuel ratio:</legend>
-        <input type="number" name="fuel_ratio" id="">
-
-        <legend>Combustion chamber temperature (K):</legend>
-        <input type="number" name="chamber_temparature" id="">
-
-        <legend>Gas molecular mass (kg/mol):</legend>
-        <input type="number" name="molecular_mass" id="">
-
-        <legend>Ratio of specific heats (cp/cv):</legend>
-        <input type="number" name="specific_heats_ratio" id="">
-
-        <legend>Characteristic chamber length (L*, in meters):</legend>
-        <input type="number" name="chamber_length" id=""><br>
-        <button type="submit">Compute</button>
-
-    </form>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr class="active">
+                            <td class="active">112345678909876543245678765</td>
+                            <td class="active">&MediumSpace;  2234567890-=--09876543456789</td>
+                        </tr>
+                        <tr>
+                            <td class="active">112345678909876543245678765</td>
+                            <td class="active">&MediumSpace; 2234567890-=--09876543456789</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <form action="" method="post" class="form-inline">
+                    {% csrf_token %}
+                    <div class="form-group"></div>
+                        <label class="sr-only">Desired thrust (N):</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">N</div>
+                            <input type="number" name="thrust" class="form-control">
+                        </div>
+                
+                        <label class="sr-only">Chamber pressure (Pa):</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Pa</div>
+                            <input type="number" name="chamber_pressure" class="form-control">
+                        </div>
+                
+                        <label class="sr-only">Altitude (m):</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">m</div>
+                            <input type="number" name="altitude" class="form-control">
+                        </div>
+                
+                        <label class="sr-only">Oxidizer to fuel ratio:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">:</div>
+                            <input type="number" name="fuel_ratio" class="form-control">
+                        </div>
+                
+                        <label class="sr-only">Combustion chamber temperature (K):</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">K</div>
+                            <input type="number" name="chamber_temparature" class="form-control">
+                        </div>
+                
+                        <label class="sr-only">Gas molecular mass (kg/mol):</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">kg/mol</div>
+                            <input type="number" name="molecular_mass" class="form-control">
+                        </div>
+                
+                        <label class="sr-only">Ratio of specific heats (cp/cv):</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">cp/cv</div>
+                            <input type="number" name="specific_heats_ratio" class="form-control">
+                        </div>
+                
+                        <label class="sr-only">Characteristic chamber length (L*, in meters):</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">m</div>
+                            <input type="number" name="chamber_length" id="">
+                        </div><br>
+                        <button type="submit" class="btn btn-primary">Compute</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!--
+    
+    
     {% if thrust %}
     <h2>The Inputs you provided</h2>
     <p>Desired thrust (N) &minus;:&minus; {{thrust}}</p>
@@ -75,28 +172,9 @@
     
     {% endif %}
 
-<h4>ALL CALCULATIONS ARE DONE IN STANDARD IMPERIAL (SI) UNITS, WITH TEMPERATURE IN KELVIN.
-    ANGLES IN DEGREES.</h4>
 
-<h4>
-CALCULATION ASSUMPTIONS:</h4>
-<ol>
-    <li>Flow maintains equilibrium at the local pressure and enthalpy level (reversible).</li>
-    <li>No heat transfer across gas-enclosure walls; closed system (adiabatic).</li>
-    <li>By definition, the flow is isentropic due to assumptions 1 and 2.</li>
-    <li>Flow composition is considered frozen (tends to underestimate performance by 1-4%).</li>
-    <li>Working fluid obeys the perfect gas law.</li>
-    <li>All species of the working fluid in the flow is gaseous.</li>
-    <li>Wall friction is negligible and all boundary layer effects are ignored.</li>
-    <li>There are no shock waves or other discontinuities within the nozzle flow.</li>
-    <li>Propellant mass flow rate is constant and steady.</li>
-    <li>Expansion of the working fluid is uniform and steady; no significant turbulence.</li>
-    <li>All exhaust gases travel with a velocity parallel to the nozzle axis.</li>
-    <li>Gas velocity, pressure, temperature, & density are all uniform across any section
-        perpendicular to the nozzle axis.</li>
-    <li>Nozzle dimensions assume an optimum divergence half-angle of 15 degrees, and an
-        optimum convergence half-angle of 45 degrees.</li>
-    <li>Contraction ratio (cross-sectional area of the chamber/area of the throat) of 8.</li>
-</ol>
+
+-->
+</div>
 </body>
 </html>
