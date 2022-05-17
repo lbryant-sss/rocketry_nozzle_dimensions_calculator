@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocketry</title>
+</head>
+<body>
+    <h1>This program generates important parameters in a conical supersonic converging-diverging
+        nozzle from certain user inputs.</h1>
+    <h5>Below is a full list of this program's capabilities and
+        key thermodynamic assumptions. Many input parameters can be obtained from NASA's CEA program
+        (Chemical Equilibrium with Applications), which is available freely available to the
+        public for <a href="https://www.grc.nasa.gov/www/CEAWeb/"></a> download here</h5>
+    <form action="" method="post">
+        {% csrf_token %}
+        <legend>Desired thrust (N):</legend>
+        <input type="number" name="thrust" id=""><br>
+
+        <legend>Chamber pressure (Pa):</legend>
+        <input type="number" name="chamber_pressure" id="">
+
+        <legend>Altitude (m):</legend>
+        <input type="number" name="altitude" id="">
+
+        <legend>Oxidizer to fuel ratio:</legend>
+        <input type="number" name="fuel_ratio" id="">
+
+        <legend>Combustion chamber temperature (K):</legend>
+        <input type="number" name="chamber_temparature" id="">
+
+        <legend>Gas molecular mass (kg/mol):</legend>
+        <input type="number" name="molecular_mass" id="">
+
+        <legend>Ratio of specific heats (cp/cv):</legend>
+        <input type="number" name="specific_heats_ratio" id="">
+
+        <legend>Characteristic chamber length (L*, in meters):</legend>
+        <input type="number" name="chamber_length" id=""><br>
+        <button type="submit">Compute</button>
+
+    </form>
+    {% if thrust %}
+    <h2>The Inputs you provided</h2>
+    <p>Desired thrust (N) &minus;:&minus; {{thrust}}</p>
+    <p>Chamber pressure (Pa) &minus;:&minus; {{chamber_pressure}}</p>
+    <p>Altitude (m) &minus;:&minus; {{altitude}}</p>
+    <p>Oxidizer to fuel ratio &minus;:&minus; {{fuel_ratio}}</p>
+    <p>Combustion chamber temperature (K) &minus;:&minus; {{chamber_temparature}}</p>
+    <p>Gas molecular mass (kg/mol) &minus;:&minus; {{molecular_mass}}</p>
+    <p>Ratio of specific heats (cp/cv) &minus;:&minus; {{specific_heats_ratio}}</p>
+    <p>Characteristic chamber length (L*, in meters) &minus;:&minus; {{chamber_length}}</p>
+    
+    <h2>OUTPUTS</h2>
+    <p>Specific impulse (at altitude):&minus;{{impulse}}</p>
+    <p>Throat temperature:&minus;{{throttle_temperature}}</p>
+    <p>Effective exhaust velocity:&minus;{{effective_exhaust_velocity}}</p>
+    <p>Mass flow rate:&minus;{{mass_flow_rate}}</p>
+    <p>Mass flow rate (oxidizer):&minus;{{oxidizer_mass_flow_rate}}</p>
+    <p>Mass flow rate (fuel):&minus;{{fuel_mass_flow_rate}}</p>
+    <p>Exit temperature:&minus;{{exit_temparature}}</p>
+    <p>Exit Mach number:&minus;{{exit_mach_number}}</p>
+    <p>Pressure ratio:&minus;{{pressure_ratio}}</p>
+    <p>Expansion ratio:&minus;{{expansion_ratio}}</p>
+    
+    <h2>ESTIMATED NOZZLE DIMENSIONS</h2>
+    <p>Area of the throat &minus;:{{throat_area}}</p>
+    <p>Area of the exit &minus;:{{exit_area}}</p>
+    <p>Throat radius &minus;:{{throat_radius}}</p>
+    <p>Exit radius &minus;:{{exit_radius}}</p>
+    <p>Chamber radius &minus;:{{chamber_radius}}</p>
+    <p>Chamber length &minus;:{{chamber_length}}</p>
+    <p>Length of the diverging nozzle &minus;:{{diverging_nozzle_length}}</p>
+    <p>Length of the converging nozzle &minus;:{{converging_nozzle_length}}</p>
+    
+    {% endif %}
+
+<h4>ALL CALCULATIONS ARE DONE IN STANDARD IMPERIAL (SI) UNITS, WITH TEMPERATURE IN KELVIN.
+    ANGLES IN DEGREES.</h4>
+
+<h4>
+CALCULATION ASSUMPTIONS:</h4>
+<ol>
+    <li>Flow maintains equilibrium at the local pressure and enthalpy level (reversible).</li>
+    <li>No heat transfer across gas-enclosure walls; closed system (adiabatic).</li>
+    <li>By definition, the flow is isentropic due to assumptions 1 and 2.</li>
+    <li>Flow composition is considered frozen (tends to underestimate performance by 1-4%).</li>
+    <li>Working fluid obeys the perfect gas law.</li>
+    <li>All species of the working fluid in the flow is gaseous.</li>
+    <li>Wall friction is negligible and all boundary layer effects are ignored.</li>
+    <li>There are no shock waves or other discontinuities within the nozzle flow.</li>
+    <li>Propellant mass flow rate is constant and steady.</li>
+    <li>Expansion of the working fluid is uniform and steady; no significant turbulence.</li>
+    <li>All exhaust gases travel with a velocity parallel to the nozzle axis.</li>
+    <li>Gas velocity, pressure, temperature, & density are all uniform across any section
+        perpendicular to the nozzle axis.</li>
+    <li>Nozzle dimensions assume an optimum divergence half-angle of 15 degrees, and an
+        optimum convergence half-angle of 45 degrees.</li>
+    <li>Contraction ratio (cross-sectional area of the chamber/area of the throat) of 8.</li>
+</ol>
+</body>
+</html>
