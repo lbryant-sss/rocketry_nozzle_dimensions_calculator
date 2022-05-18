@@ -19,22 +19,40 @@
     -webkit-box-sizing: inherit;
     box-sizing: inherit; }
   .top-bar{
-    background-color: red;
-    height: 40vh;
-    background-image: url("maxresdefault.jpg");
+    height: 70vh;
+    background-image: url("minresdefault.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
   }
   .docs{
-    padding-top: 20pt;
+    padding-top: 80pt;
+  }
+  .headh5{
+    padding-top: 100pt;
+  }
+  .headh5 h1{
+    background-color: rgb(255, 255, 255, 0.2);
+    padding: 5pt;
+    border:none;
+    border-radius: 10pt;
+  }
+  .h4{
+    background-color: rgb(255, 255, 255, 0.2);
+    padding: 5pt;
+    color: #fff;
+    text-align: center;
   }
   .docs ol{
-    padding-right: 10pt;
+    padding-right: 50pt;
   }
   .docs h4{
     padding: 12pt;  
   }
+  
   .docs h5{
     padding: 12pt;  
-    background-color: rgb(153, 153, 153);
+    background-color: rgb(22 61 94);
+    color: #fff;
     border-radius: 5pt;
   }
   .container {

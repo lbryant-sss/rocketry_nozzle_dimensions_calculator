@@ -8,34 +8,34 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/some.css' %}">
     <link rel="stylesheet" href="{% static 'css/added.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
 </head>
 <body>
     <section class="top-bar">
     <div class="container">
         <div class="top-bar">
         <div class="container-fluid">
-            <div class="row">
-                <h1 style=" color: #fff;text-align: center; padding-top: 40pt;">This program generates parameters for a conical supersonic converging-diverging
+            <div class="row headh5">
+                <h1 style=" color: #fff;text-align: center;">This program generates dimensions for a conical supersonic converging-diverging
                 nozzle from certain user inputs.
                 </h1>
             </div>
         </div>
         <div class="container-fluid">
-                    <!--Some docs go here-->
-            <h4 style="color: #fff; text-align: center; padding-top: 40pt;">ALL CALCULATIONS ARE DONE IN STANDARD IMPERIAL (SI) UNITS, WITH TEMPERATURE IN KELVIN.
+            <h4 class="h4" style="">ALL CALCULATIONS ARE DONE IN STANDARD IMPERIAL (SI) UNITS, WITH TEMPERATURE IN KELVIN.
                         ANGLES IN DEGREES.
             </h4>
             <div class="row docs" >
                 <h5>Below is a full list of this program's capabilities and
                     key thermodynamic assumptions. Many input parameters can be obtained from NASA's CEA program
                     (Chemical Equilibrium with Applications), which is available freely available to the
-                    public<br><br>
+                    public.<br><br>
                     <a href="https://www.grc.nasa.gov/www/CEAWeb/">
                         <button class="btn btn-primary">download them here</button>
                     </a>
                 </h5>
                 <h4>
-                    CALCULATION ASSUMPTIONS:
+                    CALCULATIONS ASSUMPTIONS:
                 </h4>
                 <ol>
                     <li>Flow maintains equilibrium at the local pressure and enthalpy level (reversible).</li>
@@ -57,23 +57,10 @@
                 </ol>
             </div>
         </div>
+        {% if not thrust %}
         <div class="container-fluid">
             <div class="row">
-
-            </div>
-            <div class="row">
-                <div class="table-responsive">
-                    <table class="table">
-                        <tr class="active">
-                            <td class="active">112345678909876543245678765</td>
-                            <td class="active">&MediumSpace;  2234567890-=--09876543456789</td>
-                        </tr>
-                        <tr>
-                            <td class="active">112345678909876543245678765</td>
-                            <td class="active">&MediumSpace; 2234567890-=--09876543456789</td>
-                        </tr>
-                    </table>
-                </div>
+                <h5>Fill the form below with your expected nozzle perfomance.</h5>
             </div>
             <div class="row">
                 <form action="" method="post" class="form-inline">
@@ -81,54 +68,181 @@
                     <div class="form-group"></div>
                         <label class="sr-only">Desired thrust (N):</label>
                         <div class="input-group">
-                            <div class="input-group-addon">N</div>
                             <input type="number" name="thrust" class="form-control">
                         </div>
                 
                         <label class="sr-only">Chamber pressure (Pa):</label>
                         <div class="input-group">
-                            <div class="input-group-addon">Pa</div>
                             <input type="number" name="chamber_pressure" class="form-control">
                         </div>
                 
                         <label class="sr-only">Altitude (m):</label>
                         <div class="input-group">
-                            <div class="input-group-addon">m</div>
                             <input type="number" name="altitude" class="form-control">
                         </div>
                 
                         <label class="sr-only">Oxidizer to fuel ratio:</label>
                         <div class="input-group">
-                            <div class="input-group-addon">:</div>
                             <input type="number" name="fuel_ratio" class="form-control">
                         </div>
                 
                         <label class="sr-only">Combustion chamber temperature (K):</label>
                         <div class="input-group">
-                            <div class="input-group-addon">K</div>
                             <input type="number" name="chamber_temparature" class="form-control">
                         </div>
                 
                         <label class="sr-only">Gas molecular mass (kg/mol):</label>
                         <div class="input-group">
-                            <div class="input-group-addon">kg/mol</div>
                             <input type="number" name="molecular_mass" class="form-control">
                         </div>
                 
                         <label class="sr-only">Ratio of specific heats (cp/cv):</label>
                         <div class="input-group">
-                            <div class="input-group-addon">cp/cv</div>
                             <input type="number" name="specific_heats_ratio" class="form-control">
                         </div>
                 
                         <label class="sr-only">Characteristic chamber length (L*, in meters):</label>
                         <div class="input-group">
-                            <div class="input-group-addon">m</div>
-                            <input type="number" name="chamber_length" id="">
+                            <input type="number" name="chamber_length" id="" class="form-control">
                         </div><br>
                         <button type="submit" class="btn btn-primary">Compute</button>
                 </div>
                 </form>
+            </div><br>
+            {% endif %}
+            {% if thrust %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-condensed table-striped">
+                            <h5>The inputs you provided</h5>
+                            <tr class="active">
+                                <td class="active">Desired thrust (N)</td>
+                                <td class="active">&MediumSpace;{{thrust}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Chamber pressure (Pa)</td>
+                                <td class="active">&MediumSpace; {{chamber_pressure}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Altitude (m)</td>
+                                <td class="active">&MediumSpace; {{altitude}} </td>
+                            </tr>
+                            <tr>
+                                <td class="active">Oxidizer to fuel ratio</td>
+                                <td class="active">&MediumSpace; {{fuel_ratio}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Combustion chamber temperature (K)</td>
+                                <td class="active">&MediumSpace; {{chamber_temparature}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Gas molecular mass (kg/mol)</td>
+                                <td class="active">&MediumSpace; {{molecular_mass}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Ratio of specific heats (cp/cv)</td>
+                                <td class="active">&MediumSpace; {{specific_heats_ratio}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Characteristic chamber length (L*, in meters)</td>
+                                <td class="active">&MediumSpace; {{chamber_length}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div><br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-condensed table-striped">
+                            <h5>Computed Outputs</h5>
+                            <tr class="active">
+                                <td class="active">Specific impulse (at altitude)</td>
+                                <td class="active">&MediumSpace;  {{impulse}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Throat temperature</td>
+                                <td class="active">&MediumSpace; {{throttle_temperature}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Effective exhaust velocity</td>
+                                <td class="active">&MediumSpace; {{effective_exhaust_velocity}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Mass flow rate</td>
+                                <td class="active">&MediumSpace; {{mass_flow_rate}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Mass flow rate (oxidizer)</td>
+                                <td class="active">&MediumSpace; {{oxidizer_mass_flow_rate}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Mass flow rate (fuel)</td>
+                                <td class="active">&MediumSpace; {{fuel_mass_flow_rate}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Exit temperature</td>
+                                <td class="active">&MediumSpace; {{exit_temparature}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Exit Mach number</td>
+                                <td class="active">&MediumSpace; {{exit_mach_number}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Pressure ratio</td>
+                                <td class="active">&MediumSpace; {{pressure_ratio}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Expansion ratio</td>
+                                <td class="active">&MediumSpace; {{expansion_ratio}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div><br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-condensed table-striped">
+                            <h5>Approximates Nozzle Dimensions&ThickSpace;<span><i>**All lengths are in meters, all areas are in square metres.</i></span></h5>
+                            <tr class="active">
+                                <td class="active">Area of the throat</td>
+                                <td class="active">&MediumSpace;  {{throat_area}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Area of the exit</td>
+                                <td class="active">&MediumSpace; {{exit_area}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Throat radius</td>
+                                <td class="active">&MediumSpace; {{throat_radius}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Exit radius</td>
+                                <td class="active">&MediumSpace; {{exit_radius}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Chamber radius</td>
+                                <td class="active">&MediumSpace; {{chamber_radius}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Chamber length</td>
+                                <td class="active">&MediumSpace; {{chamber_length}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Length of the diverging nozzle</td>
+                                <td class="active">&MediumSpace; {{diverging_nozzle_length}}</td>
+                            </tr>
+                            <tr>
+                                <td class="active">Length of the converging nozzle</td>
+                                <td class="active">&MediumSpace; {{converging_nozzle_length}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             </div>
         </div>
     </section>
