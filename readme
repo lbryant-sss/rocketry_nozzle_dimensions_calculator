@@ -7,3 +7,6 @@ I keep running into a LocalBoundVariable error, not figured out why yet.
 Incase you run into it, go to views.py, locate a variable Tt in the context, add a tab before it then delete the tab.
 That should temporarily fix the error in the meantime while I work on a better solution.
 If you have a fix idea please feel free to make a pull request.
+
+
+The generated pdf file will be located in the root media folder.
