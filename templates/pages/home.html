@@ -83,27 +83,27 @@
                 
                         <label class="sr-only">Oxidizer to fuel ratio:</label>
                         <div class="input-group">
-                            <input type="number" name="fuel_ratio" class="form-control">
+                            <input type="number" step="0.1" name="fuel_ratio" class="form-control">
                         </div>
                 
                         <label class="sr-only">Combustion chamber temperature (K):</label>
                         <div class="input-group">
-                            <input type="number" name="chamber_temparature" class="form-control">
+                            <input type="number" step="0.1" name="chamber_temparature" class="form-control">
                         </div>
                 
                         <label class="sr-only">Gas molecular mass (kg/mol):</label>
                         <div class="input-group">
-                            <input type="number" name="molecular_mass" class="form-control">
+                            <input type="number" step="0.01" name="molecular_mass" class="form-control">
                         </div>
                 
                         <label class="sr-only">Ratio of specific heats (cp/cv):</label>
                         <div class="input-group">
-                            <input type="number" name="specific_heats_ratio" class="form-control">
+                            <input type="number" step="0.1" name="specific_heats_ratio" class="form-control">
                         </div>
                 
                         <label class="sr-only">Characteristic chamber length (L*, in meters):</label>
                         <div class="input-group">
-                            <input type="number" name="chamber_length" id="" class="form-control">
+                            <input type="number" step="0.1" name="chamber_length" id="" class="form-control">
                         </div><br>
                         <button type="submit" class="btn btn-primary">Compute</button>
                 </div>

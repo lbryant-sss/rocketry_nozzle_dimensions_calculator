@@ -31,8 +31,8 @@ class home(View):
         ALT = int(request.POST['altitude'])
         OF = int(request.POST['fuel_ratio'])
         T0 = int(request.POST['chamber_temparature'])
-        M = int(request.POST['molecular_mass'])
-        k = int(request.POST['specific_heats_ratio'])
+        M = float(request.POST['molecular_mass'])
+        k = float(request.POST['specific_heats_ratio'])
         Lstar = int(request.POST['chamber_length'])
 
         # Call the calculate_values function from calculations.py
