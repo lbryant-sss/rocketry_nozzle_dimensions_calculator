@@ -2,7 +2,11 @@
 Rocketry Nozzle Dimensions Calculation Report Generator
 
 ## Overview
-This project is a portfolio project aimed at learning and showcasing my skills in web development using Django and data visualization with Matplotlib. The purpose of the project is to create a web application that allows users to input data, perform calculations, and generate downloadable PDF reports based on the input. The project serves as a platform for me to demonstrate my proficiency in building interactive web applications and integrating data visualization capabilities. Additionally, it provides an opportunity to explore the use of Django for back-end development and Matplotlib for generating dynamic charts and graphs.
+This project is a portfolio project aimed at learning and showcasing my skills in web development using Django and data visualization with Matplotlib.
+The purpose of the project is to create a web application that allows users to input data, perform calculations, and generate 
+downloadable PDF reports based on the input. The project serves as a platform for me to demonstrate my proficiency in building 
+interactive web applications and integrating data visualization capabilities. Additionally, it provides an opportunity to explore 
+the use of Django for back-end development and Matplotlib for generating dynamic charts and graphs.
 
 ## Features
 - Generate PDF reports based on user input.
