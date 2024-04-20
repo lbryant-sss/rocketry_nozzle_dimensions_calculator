@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure--ocspti$6h+76z&h0x=u4f2wa80w%es$5zc$p^_189w3ph2&$j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://nozzle-dimensions-calculator-26875f944e06.herokuapp.com']
 
 
 # Application definition
