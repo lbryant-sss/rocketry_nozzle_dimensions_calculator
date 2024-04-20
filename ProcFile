@@ -1,1 +1,1 @@
-web: gunicorn rocketry.wsgi
+web: gunicorn rocketry.wsgi:application --log-file -
