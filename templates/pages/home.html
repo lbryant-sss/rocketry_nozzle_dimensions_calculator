@@ -11,17 +11,21 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
 </head>
 <body>
-    <section class="top-bar">
+    {% if not thrust %}
+    <section class="top-bar" style="background-image: url('https://i.pinimg.com/originals/2f/73/ae/2f73ae74349b6e8cc173997bb3572e20.png');">
     <div class="container">
+        
         <div class="top-bar">
         <div class="container-fluid">
             <div class="row headh5">
-                <h1 style=" color: #fff;text-align: center;">This program generates dimensions for a conical supersonic converging-diverging
+                <h1 style=" color: #000000;text-align: center;">This program generates dimensions for a conical supersonic converging-diverging
                 nozzle from certain user inputs.
                 </h1>
+                {% endif %}
             </div>
         </div>
         <div class="container-fluid">
+            {% if not thrust %}
             <h4 class="h4">ALL CALCULATIONS ARE DONE IN STANDARD IMPERIAL (SI) UNITS, WITH TEMPERATURE IN KELVIN.
                         ANGLES IN DEGREES.
             </h4>
@@ -57,7 +61,6 @@
                 </ol>
             </div>
         </div>
-        {% if not thrust %}
         <div class="container-fluid">
             <div class="row">
                 <h5>Fill the form below with your expected nozzle perfomance.</h5>
@@ -243,7 +246,7 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <a href="#">
+                <a href="{{ pdf_instance.generate_pdf.url }}" download>
                     <Button class="btn btn-primary">
                         View Your Generated PDF here
                     </Button>

@@ -20,8 +20,9 @@
     box-sizing: inherit; }
   .top-bar{
     height: 70vh;
-    background-image: url("minresdefault.jpg");
+    
     background-attachment: fixed;
+    background-size: cover;
     background-repeat: no-repeat;
   }
   .docs{
@@ -31,15 +32,15 @@
     padding-top: 100pt;
   }
   .headh5 h1{
-    background-color: rgb(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 5pt;
     border:none;
     border-radius: 10pt;
   }
   .h4{
-    background-color: rgb(255, 255, 255, 0.2);
+    background-color: rgb(255, 255, 255, 0.8);
     padding: 5pt;
-    color: #fff;
+    color: #000000;
     text-align: center;
   }
   .docs ol{

@@ -2,6 +2,10 @@ from math import sqrt, tan, radians, degrees, pi, exp
 
 from math import sqrt, exp, tan, radians, pi
 
+global P3, Tt, v2, mdot, mdot_fuel, mdot_oxidizer, Isp, Te, Mnum, At, Ae, Rt, Re, Ac, Rc, Lc, Ldn, Lcn, ER
+        
+    
+
 def calculate_values(F, P0, ALT, OF, T0, M, k, Lstar):
     try:
         # Calculate P3

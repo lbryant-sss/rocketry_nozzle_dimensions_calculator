@@ -1,25 +1,45 @@
-from django.shortcuts import render
+import mimetypes
+import os
+from django.http import FileResponse, HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 from django.views import View
 from math import sqrt, tan, radians, degrees, pi, exp
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 from django.conf import settings
+from django.core.signing import Signer, BadSignature
 from . models import PDF
+from urllib.parse import quote
 
 #importing calculations
 from .calculations import calculate_values
-
 #import pdf Generator function
 from .generator import generate_pdf
 # Create your views here.
 
+
 #F = P0 = ALT = OF = T0 = M = k = Lstar = P3 = Tt = v2 = mdot = mdot_fuel = mdot_oxidizer = Isp = Te = Mnum = At = Ae = Rt = Re = Ac = Rc = Lc = Ldn = Lcn = ER = None
+class DownloadPDFView(View):    
+    def get(self, request, *args, **kwargs):
+        latest_pdf = PDF.objects.latest('id')
+        pdf_file_path = latest_pdf.generate_pdf.path
+
+        # Open the PDF file and return it as a FileResponse
+        print(latest_pdf)
+        print(pdf_file_path)
+        return FileResponse(open(pdf_file_path, 'rb'), as_attachment=True)
+
+
+
+
 
 
 class home(View):
     template_name = 'pages/home.html'
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {})
+        
+        return render(request, self.template_name)
 
 
     def post(self, request, *args, **kwargs):
@@ -80,10 +100,13 @@ class home(View):
             }
 
         generate_pdf(context)
+        latest_pdf = PDF.objects.latest('id')
+        context['pdf_instance'] = latest_pdf
 
         return render(request, self.template_name, context) 
             
         
+
 
 
         
