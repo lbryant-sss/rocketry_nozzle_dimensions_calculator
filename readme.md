@@ -1,5 +1,4 @@
-# Project Title
-Rocketry Nozzle Dimensions Calculation Report Generator
+# Rocketry Nozzle Dimensions Calculation Report Generator
 
 ## Overview
 This project is a portfolio project aimed at learning and showcasing my skills in web development using Django and data visualization with Matplotlib.
